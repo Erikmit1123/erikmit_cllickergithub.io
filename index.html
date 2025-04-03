@@ -1,358 +1,171 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PolywarClicker</title>
   <style>
-    body {
-      background: linear-gradient(to bottom, #f0f0f0, #dcdcdc);
-      color: #333;
-      font-family: 'Arial', sans-serif;
-      text-align: center;
-      padding-top: 20px;
-    }
+    /* Стили для элементов на странице */
+/* Стили для элементов на странице */
+body {
+  background: linear-gradient(to bottom, #f0f0f0, #dcdcdc); /* Более светлый градиентный фон */
+  color: #333; /* Темно-серый основной цвет текста */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Современный шрифт */
+  text-align: center; /* Выравнивание текста по центру */
+  padding-top: 20px; /* Отступ сверху */
+  transition: background-color 0.3s ease; /* Плавный переход фона */
+}
 
-    h1 {
-      color: #555;
-      font-size: 36px;
-      margin-bottom: 30px;
-    }
+h1 {
+  color: #555; /* Цвет заголовка */
+  font-size: 36px;
+  margin-bottom: 20px;
+}
 
-    .button-container {
-      margin: 20px 0;
-    }
+button#clickButton {
+  background-color: #007bff; /* Синий цвет фона кнопки */
+  color: white; /* Белый цвет текста кнопки */
+  border: none; /* Убираем обводку кнопки */
+  padding: 12px 24px; /* Отступы внутри кнопки */
+  font-size: 18px; /* Размер шрифта кнопки */
+  cursor: pointer; /* Курсор в виде руки при наведении */
+  margin: 5px; /* Отступы между кнопками */
+  border-radius: 8px; /* Скругленные уголки */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Плавный переход и анимация */
+}
 
-    button {
-      background-color: #007bff;
-      color: white;
-      border: none;
-      padding: 10px 20px;
-      font-size: 16px;
-      cursor: pointer;
-      margin: 5px;
-      border-radius: 5px;
-      transition: background-color 0.3s ease;
-      width: 200px;
-    }
+button#clickButton:hover {
+  background-color: #0056b3; /* Более темный синий при наведении */
+  transform: scale(1.1); /* Увеличение размера при наведении */
+}
 
-    button:hover {
-      background-color: #0056b3;
-    }
+span#counter {
+  color: #007bff; /* Синий цвет счетчика */
+  font-size: 28px; /* Увеличенный размер шрифта счетчика */
+  font-weight: bold; /* Жирный шрифт счетчика */
+  margin-top: 15px; /* Отступ сверху от кнопок */
+  display: block; /* Чтобы занимал отдельную строку */
+}
 
-    button:disabled {
-      background-color: #ccc;
-      cursor: not-allowed;
-    }
+/* Стили для вкладок */
+.tab {
+  display: inline-block; /* Вкладки в строку */
+  padding: 12px 24px; /* Отступы внутри вкладок */
+  background-color: #f0f0f0; /* Светло-серый фон вкладок */
+  border: 1px solid #ccc; /* Обводка вкладок */
+  cursor: pointer; /* Курсор в виде руки при наведении */
+  font-size: 18px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
 
-    span#counter {
-      color: #007bff;
-      font-size: 24px;
-      font-weight: bold;
-      margin-top: 15px;
-      display: block;
-    }
+.tab.active {
+  background-color: #007bff; /* Синий фон активной вкладки */
+  color: white; /* Белый цвет текста активной вкладки */
+}
 
-    .tab {
-      display: inline-block;
-      padding: 10px 20px;
-      background-color: #f0f0f0;
-      border: 1px solid #ccc;
-      cursor: pointer;
-      margin: 5px;
-      border-radius: 5px;
-    }
+.tab:hover {
+  transform: scale(1.05); /* Легкое увеличение при наведении */
+}
 
-    .tab.active {
-      background-color: #007bff;
-      color: white;
-    }
+.tab-content {
+  display: none; /* Скрываем контент вкладок */
+  margin-top: 20px; /* Отступ сверху от вкладок */
+  font-size: 18px;
+}
 
-    .tab-content {
-      display: none;
-      margin-top: 20px;
-    }
+.tab-content.active {
+  display: block; /* Показываем активный контент */
+}
 
-    .tab-content.active {
-      display: block;
-    }
+/* Стили для улучшений */
+.upgrade {
+  background-color: #f9f9f9; /* Светлый фон улучшений */
+  border: 1px solid #ccc; /* Обводка улучшений */
+  padding: 15px; /* Отступы внутри улучшений */
+  margin: 15px 0; /* Отступы между улучшениями */
+  display: inline-block; /* Чтобы улучшения отображались в строку */
+  width: 200px; /* Ширина блока */
+  border-radius: 8px; /* Скругленные уголки */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
+  transition: box-shadow 0.3s ease; /* Плавный переход для тени */
+}
 
-    .upgrade {
-      background-color: #f9f9f9;
-      border: 1px solid #ccc;
-      padding: 15px;
-      margin: 10px;
-      display: inline-block;
-      width: 220px;
-      text-align: center;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    }
+.upgrade:hover {
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Увеличение тени при наведении */
+}
 
-    .upgrade p {
-      font-size: 16px;
-      margin: 10px 0;
-    }
+button.buy {
+  background-color: #28a745; /* Зеленый цвет фона кнопки покупки */
+  color: white; /* Белый цвет текста кнопки покупки */
+  border: none; /* Убираем обводку кнопки покупки */
+  padding: 8px 16px; /* Отступы внутри кнопки покупки */
+  font-size: 16px; /* Размер шрифта кнопки покупки */
+  cursor: pointer; /* Курсор в виде руки при наведении */
+  border-radius: 5px; /* Скругленные уголки */
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
 
-    .gold {
-      margin-top: 20px;
-      font-size: 20px;
-      color: #ffcc00;
-      font-weight: bold;
-    }
+button.buy:disabled {
+  background-color: #ccc; /* Серый цвет фона кнопки покупки, если она недоступна */
+  cursor: not-allowed; /* Курсор в виде запрещающего знака */
+}
 
-    .stats {
-      margin-top: 20px;
-    }
+button.buy:hover {
+  transform: scale(1.05); /* Увеличение размера кнопки при наведении */
+}
 
-    /* Добавим стиль для меню */
-    .menu-container {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      margin-bottom: 30px;
-    }
-  </style>
-</head>
-<body>
-  <h1>Polywar Clicker</h1>
+let totalClicks = 0; // Общий счетчик кликов
+let clicksPerClick = 1; // Количество кликов за один клик
+let upgrades = [
+  { id: 1, cost: 5, value: 1 },
+  { id: 2, cost: 50, value: 5 },
+  { id: 3, cost: 250, value: 10 },
+  { id: 4, cost: 1250, value: 25 },
+  { id: 5, cost: 5000, value: 50 },
+  { id: 6, cost: 25000, value: 100 },
+  { id: 7, cost: 125000, value: 250 },
+  { id: 8, cost: 500000, value: 500 },
+  { id: 9, cost: 2500000, value: 1000 },
+  { id: 10, cost: 12500000, value: 2500 }
+];
 
-  <div class="menu-container">
-    <button id="shopButton" class="tab active">Магазин</button>
-    <button id="statsButton" class="tab">Статистика</button>
-  </div>
-
-  <div id="shop" class="tab-content active">
-    <button id="clickButton">Кликни меня!</button>
-    <p>Счетчик: <span id="counter">0</span></p>
-
-    <!-- Магазин -->
-    <div class="upgrade">
-      <p>Улучшение клика (+1 за клик)</p>
-      <p>Стоимость: <span id="upgrade1Cost">5</span> кликов</p>
-      <button id="buyUpgrade1" class="buy">Купить</button>
-    </div>
-    <div class="upgrade">
-      <p>Улучшение клика (+5 за клик)</p>
-      <p>Стоимость: <span id="upgrade2Cost">25</span> кликов</p>
-      <button id="buyUpgrade2" class="buy">Купить</button>
-    </div>
-    <div class="upgrade">
-      <p>Улучшение клика (+10 за клик)</p>
-      <p>Стоимость: <span id="upgrade3Cost">50</span> кликов</p>
-      <button id="buyUpgrade3" class="buy">Купить</button>
-    </div>
-    <div class="upgrade">
-      <p>Улучшение клика (+25 за клик)</p>
-      <p>Стоимость: <span id="upgrade4Cost">100</span> кликов</p>
-      <button id="buyUpgrade4" class="buy">Купить</button>
-    </div>
-    <div class="upgrade">
-      <p>Улучшение клика (+50 за клик)</p>
-      <p>Стоимость: <span id="upgrade5Cost">250</span> кликов</p>
-      <button id="buyUpgrade5" class="buy">Купить</button>
-    </div>
-
-    <div class="upgrade">
-      <p>Обмен кликов на золото (10000 кликов = 1 золото)</p>
-      <button id="exchangeButton">Обменять</button>
-    </div>
-  </div>
-
-  <div id="stats" class="tab-content">
-    <div class="stats">
-      <p>Всего кликов: <span id="totalClicks">0</span></p>
-      <p>Кликов в секунду: <span id="clicksPerSecond">0</span></p>
-      <p>Кликов за клик: <span id="clicksPerClickDisplay">1</span></p>
-      <div class="gold">
-        Золото: <span id="goldCounter">0</span>
-      </div>
-    </div>
-  </div>
-
-  <script>
-    // JavaScript код для работы кликера
-    const clickButton = document.getElementById('clickButton');
-    const counterDisplay = document.getElementById('counter');
-    const totalClicksDisplay = document.getElementById('totalClicks');
-    const clicksPerSecondDisplay = document.getElementById('clicksPerSecond');
-    const clicksPerClickDisplay = document.getElementById('clicksPerClickDisplay');
-    const goldCounterDisplay = document.getElementById('goldCounter');
-    const exchangeButton = document.getElementById('exchangeButton');
-
-    let counterValue = 0;
-    let totalClicks = 0;
-    let clicksPerSecond = 0;
-    let clicksPerClick = 1;
-    let totalGold = 0;
-    let goldCounterValue = 0;
-
-    clickButton.addEventListener('click', function() {
-      counterValue += clicksPerClick;
-      totalClicks++;
-      counterDisplay.textContent = counterValue;
-      totalClicksDisplay.textContent = totalClicks;
-    });
-
-    // Улучшения
-// Улучшения
-const upgrade1Cost = 5;
-const buyUpgrade1Button = document.getElementById('buyUpgrade1');
-buyUpgrade1Button.addEventListener('click', function() {
-  if (counterValue >= upgrade1Cost) {
-    counterValue -= upgrade1Cost;
-    counterDisplay.textContent = counterValue;
-    clicksPerClick++;
-    clicksPerClickDisplay.textContent = clicksPerClick;
-    buyUpgrade1Button.disabled = true;
-  }
+document.getElementById('clickButton').addEventListener('click', () => {
+  totalClicks += clicksPerClick;
+  document.getElementById('counter').textContent = totalClicks;
+  document.getElementById('totalClicks').textContent = totalClicks;
+  updateUpgradeButtons();
 });
 
-const upgrade2Cost = 25;
-const buyUpgrade2Button = document.getElementById('buyUpgrade2');
-buyUpgrade2Button.addEventListener('click', function() {
-  if (counterValue >= upgrade2Cost) {
-    counterValue -= upgrade2Cost;
-    counterDisplay.textContent = counterValue;
-    clicksPerClick += 5;
-    clicksPerClickDisplay.textContent = clicksPerClick;
-    buyUpgrade2Button.disabled = true;
+function buyUpgrade(upgradeId) {
+  const upgrade = upgrades.find(u => u.id === upgradeId);
+  if (totalClicks >= upgrade.cost) {
+    totalClicks -= upgrade.cost;
+    clicksPerClick += upgrade.value;
+    upgrade.cost = Math.floor(upgrade.cost * 1.5); // Увеличиваем стоимость улучшения
+
+    document.getElementById('counter').textContent = totalClicks;
+    document.getElementById('totalClicks').textContent = totalClicks;
+    updateUpgradeButtons();
   }
+}
+
+function updateUpgradeButtons() {
+  upgrades.forEach(upgrade => {
+    const button = document.getElementById(`buyUpgrade${upgrade.id}`);
+    button.disabled = totalClicks < upgrade.cost;
+    document.getElementById(`upgrade${upgrade.id}Cost`).textContent = upgrade.cost;
+  });
+}
+
+document.querySelectorAll('.buy').forEach(button => {
+  button.addEventListener('click', (e) => {
+    const upgradeId = parseInt(e.target.id.replace('buyUpgrade', ''));
+    buyUpgrade(upgradeId);
+  });
 });
 
-const upgrade3Cost = 50;
-const buyUpgrade3Button = document.getElementById('buyUpgrade3');
-buyUpgrade3Button.addEventListener('click', function() {
-  if (counterValue >= upgrade3Cost) {
-    counterValue -= upgrade3Cost;
-    counterDisplay.textContent = counterValue;
-    clicksPerClick += 10;
-    clicksPerClickDisplay.textContent = clicksPerClick;
-    buyUpgrade3Button.disabled = true;
-  }
-});
+// Инициализация кнопок с их состоянием
+updateUpgradeButtons();
 
-const upgrade4Cost = 100;
-const buyUpgrade4Button = document.getElementById('buyUpgrade4');
-buyUpgrade4Button.addEventListener('click', function() {
-  if (counterValue >= upgrade4Cost) {
-    counterValue -= upgrade4Cost;
-    counterDisplay.textContent = counterValue;
-    clicksPerClick += 25;
-    clicksPerClickDisplay.textContent = clicksPerClick;
-    buyUpgrade4Button.disabled = true;
-  }
-});
-
-const upgrade5Cost = 250;
-const buyUpgrade5Button = document.getElementById('buyUpgrade5');
-buyUpgrade5Button.addEventListener('click', function() {
-  if (counterValue >= upgrade5Cost) {
-    counterValue -= upgrade5Cost;
-    counterDisplay.textContent = counterValue;
-    clicksPerClick += 50;
-    clicksPerClickDisplay.textContent = clicksPerClick;
-    buyUpgrade5Button.disabled = true;
-  }
-});
-
-const upgrade6Cost = 500;
-const buyUpgrade6Button = document.getElementById('buyUpgrade6');
-buyUpgrade6Button.addEventListener('click', function() {
-  if (counterValue >= upgrade6Cost) {
-    counterValue -= upgrade6Cost;
-    counterDisplay.textContent = counterValue;
-    clicksPerClick += 100;
-    clicksPerClickDisplay.textContent = clicksPerClick;
-    buyUpgrade6Button.disabled = true;
-  }
-});
-
-const upgrade7Cost = 1000;
-const buyUpgrade7Button = document.getElementById('buyUpgrade7');
-buyUpgrade7Button.addEventListener('click', function() {
-  if (counterValue >= upgrade7Cost) {
-    counterValue -= upgrade7Cost;
-    counterDisplay.textContent = counterValue;
-    clicksPerClick += 250;
-    clicksPerClickDisplay.textContent = clicksPerClick;
-    buyUpgrade7Button.disabled = true;
-  }
-});
-
-const upgrade8Cost = 2500;
-const buyUpgrade8Button = document.getElementById('buyUpgrade8');
-buyUpgrade8Button.addEventListener('click', function() {
-  if (counterValue >= upgrade8Cost) {
-    counterValue -= upgrade8Cost;
-    counterDisplay.textContent = counterValue;
-    clicksPerClick += 500;
-    clicksPerClickDisplay.textContent = clicksPerClick;
-    buyUpgrade8Button.disabled = true;
-  }
-});
-
-const upgrade9Cost = 5000;
-const buyUpgrade9Button = document.getElementById('buyUpgrade9');
-buyUpgrade9Button.addEventListener('click', function() {
-  if (counterValue >= upgrade9Cost) {
-    counterValue -= upgrade9Cost;
-    counterDisplay.textContent = counterValue;
-    clicksPerClick += 1000;
-    clicksPerClickDisplay.textContent = clicksPerClick;
-    buyUpgrade9Button.disabled = true;
-  }
-});
-
-const upgrade10Cost = 10000;
-const buyUpgrade10Button = document.getElementById('buyUpgrade10');
-buyUpgrade10Button.addEventListener('click', function() {
-  if (counterValue >= upgrade10Cost) {
-    counterValue -= upgrade10Cost;
-    counterDisplay.textContent = counterValue;
-    clicksPerClick += 2500;
-    clicksPerClickDisplay.textContent = clicksPerClick;
-    buyUpgrade10Button.disabled = true;
-  }
-});
-
-    // Обмен кликов на золото
-    exchangeButton.addEventListener('click', function() {
-      if (counterValue >= 10000) {
-        let goldGained = Math.floor(counterValue / 10000);
-        goldCounterValue += goldGained;
-        totalGold += goldGained;
-        counterValue = counterValue % 10000;
-        counterDisplay.textContent = counterValue;
-        goldCounterDisplay.textContent = goldCounterValue;
-      }
-    });
-
-    // Переключение между вкладками
-    const shopButton = document.getElementById('shopButton');
-    const statsButton = document.getElementById('statsButton');
-    const shopContent = document.getElementById('shop');
-    const statsContent = document.getElementById('stats');
-
-    shopButton.addEventListener('click', function() {
-      shopButton.classList.add('active');
-      statsButton.classList.remove('active');
-      shopContent.classList.add('active');
-      statsContent.classList.remove('active');
-    });
-
-    statsButton.addEventListener('click', function() {
-      statsButton.classList.add('active');
-      shopButton.classList.remove('active');
-      statsContent.classList.add('active');
-      shopContent.classList.remove('active');
-    });
-
-    // Функция для обновления статистики
-    setInterval(function() {
-      clicksPerSecond = totalClicks;
-      clicksPerSecondDisplay.textContent = clicksPerSecond;
-    }, 1000);
   </script>
 </body>
 </html>
