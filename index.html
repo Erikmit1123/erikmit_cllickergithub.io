@@ -5,46 +5,198 @@
   <style>
     /* Стили для элементов на странице */
     body {
-      background: linear-gradient(to bottom, white, lightgray); /* Градиентный фон */
-      color: black; /* Основной цвет текста черный */
+      background: linear-gradient(to bottom, #f0f0f0, #dcdcdc); /* Более светлый градиентный фон */
+      color: #333; /* Темно-серый основной цвет текста */
       font-family: sans-serif; /* Шрифт текста */
       text-align: center; /* Выравнивание текста по центру */
+      padding-top: 20px; /* Отступ сверху */
+    }
+
+    h1 {
+      color: #555; /* Цвет заголовка */
     }
 
     button#clickButton {
-      color: black; /* Цвет текста кнопки черный */
+      background-color: #007bff; /* Синий цвет фона кнопки */
+      color: white; /* Белый цвет текста кнопки */
+      border: none; /* Убираем обводку кнопки */
+      padding: 10px 20px; /* Отступы внутри кнопки */
+      font-size: 16px; /* Размер шрифта кнопки */
+      cursor: pointer; /* Курсор в виде руки при наведении */
+      margin: 5px; /* Отступы между кнопками */
+      border-radius: 5px; /* Скругленные уголки */
+      transition: background-color 0.3s ease; /* Плавный переход цвета фона */
     }
 
-    button#clickButton2 {
-      color: black; /* Цвет текста второй кнопки черный */
+    button#clickButton:hover {
+      background-color: #0056b3; /* Более темный синий при наведении */
     }
 
     span#counter {
-      color: black; /* Цвет текста счетчика черный */
+      color: #007bff; /* Синий цвет счетчика */
+      font-size: 24px; /* Увеличенный размер шрифта счетчика */
+      font-weight: bold; /* Жирный шрифт счетчика */
+      margin-top: 15px; /* Отступ сверху от кнопок */
+      display: block; /* Чтобы занимал отдельную строку */
+    }
+
+    /* Стили для магазина */
+    .tab {
+      display: inline-block; /* Вкладки в строку */
+      padding: 10px 20px; /* Отступы внутри вкладок */
+      background-color: #f0f0f0; /* Светло-серый фон вкладок */
+      border: 1px solid #ccc; /* Обводка вкладок */
+      cursor: pointer; /* Курсор в виде руки при наведении */
+    }
+
+    .tab.active {
+      background-color: #007bff; /* Синий фон активной вкладки */
+      color: white; /* Белый цвет текста активной вкладки */
+    }
+
+    .tab-content {
+      display: none; /* Скрываем контент вкладок */
+      margin-top: 20px; /* Отступ сверху от вкладок */
+    }
+
+    .tab-content.active {
+      display: block; /* Показываем активный контент */
+    }
+
+    .upgrade {
+      background-color: #f0f0f0; /* Светло-серый фон улучшений */
+      border: 1px solid #ccc; /* Обводка улучшений */
+      padding: 10px; /* Отступы внутри улучшений */
+      margin: 10px; /* Отступы между улучшениями */
+      display: inline-block; /* Чтобы улучшения отображались в строку */
+    }
+
+    button.buy {
+      background-color: #28a745; /* Зеленый цвет фона кнопки покупки */
+      color: white; /* Белый цвет текста кнопки покупки */
+      border: none; /* Убираем обводку кнопки покупки */
+      padding: 5px 10px; /* Отступы внутри кнопки покупки */
+      font-size: 14px; /* Размер шрифта кнопки покупки */
+      cursor: pointer; /* Курсор в виде руки при наведении */
+      border-radius: 3px; /* Скругленные уголки */
+    }
+
+    button.buy:disabled {
+      background-color: #ccc; /* Серый цвет фона кнопки покупки, если она недоступна */
+      cursor: not-allowed; /* Курсор в виде запрещающего знака */
     }
   </style>
 </head>
 <body>
   <h1>Нажми на кнопку!</h1>
-  <button id="clickButton">Кликни меня (+1)</button>
-  <button id="clickButton2">Кликни меня (+2)</button>
+  <button id="clickButton">Кликни меня</button>
   <p>Счетчик: <span id="counter">0</span></p>
+
+  <div class="tab active" data-tab="upgrades">Улучшения</div>
+  <div class="tab" data-tab="stats">Статистика</div>
+
+  <div id="upgrades" class="tab-content active">
+    <div class="upgrade">
+      <p>Улучшение клика (+1 за клик)</p>
+      <p>Стоимость: <span id="upgrade1Cost">10</span> кликов</p>
+      <button id="buyUpgrade1" class="buy">Купить</button>
+    </div>
+
+    <div class="upgrade">
+      <p>Автокликер (+1 клик в секунду)</p>
+      <p>Стоимость: <span id="upgrade2Cost">50</span> кликов</p>
+      <button id="buyUpgrade2" class="buy">Купить</button>
+    </div>
+
+    <div class="upgrade">
+      <p>Улучшение клика (+5 за клик)</p>
+      <p>Стоимость: <span id="upgrade3Cost">100</span> кликов</p>
+      <button id="buyUpgrade3" class="buy">Купить</button>
+    </div>
+
+    <div class="upgrade">
+      <p>Автокликер (+5 кликов в секунду)</p>
+      <p>Стоимость: <span id="upgrade4Cost">250</span> кликов</p>
+      <button id="buyUpgrade4" class="buy">Купить</button>
+    </div>
+  </div>
+
+  <div id="stats" class="tab-content">
+    <p>Всего кликов: <span id="totalClicks">0</span></p>
+    <p>Кликов в секунду: <span id="clicksPerSecond">0</span></p>
+  </div>
 
   <script>
     // JavaScript код для работы кликера
     const clickButton = document.getElementById('clickButton');
-    const clickButton2 = document.getElementById('clickButton2');
     const counterDisplay = document.getElementById('counter');
     let counterValue = 0;
+    let totalClicks = 0;
+    let clicksPerSecond = 0;
+    let clicksPerClick = 1;
+    let autoClicksPerSecond = 0;
 
     clickButton.addEventListener('click', function() {
-      counterValue++;
+      counterValue += clicksPerClick;
+      totalClicks++;
       counterDisplay.textContent = counterValue;
     });
 
-    clickButton2.addEventListener('click', function() {
-      counterValue += 2;
-      counterDisplay.textContent = counterValue;
+    // Улучшения
+    const upgrade1Cost = 10;
+    const upgrade2Cost = 50;
+    const upgrade3Cost = 100;
+    const upgrade4Cost = 250;
+
+    const buyUpgrade1Button = document.getElementById('buyUpgrade1');
+    const buyUpgrade2Button = document.getElementById('buyUpgrade2');
+    const buyUpgrade3Button = document.getElementById('buyUpgrade3');
+    const buyUpgrade4Button = document.getElementById('buyUpgrade4');
+
+    buyUpgrade1Button.addEventListener('click', function() {
+      if (counterValue >= upgrade1Cost) {
+        counterValue -= upgrade1Cost;
+        counterDisplay.textContent = counterValue;
+        clicksPerClick++;
+        buyUpgrade1Button.disabled = true;
+      }
+    });
+
+    buyUpgrade2Button.addEventListener('click', function() {
+      if (counterValue >= upgrade2Cost) {
+        counterValue -= upgrade2Cost;
+        counterDisplay.textContent = counterValue;
+        autoClicksPerSecond++;
+        setInterval(function() {
+          counterValue += autoClicksPerSecond;
+          totalClicks++;
+          counterDisplay.textContent = counterValue;
+        }, 1000);
+        buyUpgrade2Button.disabled = true;
+      }
+    });
+
+    buyUpgrade3Button.addEventListener('click', function() {
+      if (counterValue >= upgrade3Cost) {
+        counterValue -= upgrade3Cost;
+        counterDisplay.textContent = counterValue;
+        clicksPerClick += 5;
+        buyUpgrade3Button.disabled = true;
+      }
+    });
+
+    buyUpgrade4Button.addEventListener('click', function() {
+      if (counterValue >= upgrade4Cost) {
+        counterValue -= upgrade4Cost;
+        counterDisplay.textContent = counterValue;
+        autoClicksPerSecond += 5;
+        setInterval(function() {
+          counterValue += autoClicksPerSecond;
+          totalClicks++;
+          counterDisplay.textContent = counterValue;
+        }, 1000);
+        buyUpgrade4Button.disabled = true;
+      }
     });
   </script>
 </body>
