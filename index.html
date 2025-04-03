@@ -77,41 +77,10 @@
       display: block; /* Показываем активный контент */
     }
 
-    /* Стили для улучшений */
-    .upgrade {
-      background-color: #f9f9f9; /* Светлый фон улучшений */
-      border: 1px solid #ccc; /* Обводка улучшений */
-      padding: 15px; /* Отступы внутри улучшений */
-      margin: 15px 0; /* Отступы между улучшениями */
-      display: inline-block; /* Чтобы улучшения отображались в строку */
-      width: 200px; /* Ширина блока */
-      border-radius: 8px; /* Скругленные уголки */
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
-      transition: box-shadow 0.3s ease; /* Плавный переход для тени */
-    }
-
-    .upgrade:hover {
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Увеличение тени при наведении */
-    }
-
-    button.buy {
-      background-color: #28a745; /* Зеленый цвет фона кнопки покупки */
-      color: white; /* Белый цвет текста кнопки покупки */
-      border: none; /* Убираем обводку кнопки покупки */
-      padding: 8px 16px; /* Отступы внутри кнопки покупки */
-      font-size: 16px; /* Размер шрифта кнопки покупки */
-      cursor: pointer; /* Курсор в виде руки при наведении */
-      border-radius: 5px; /* Скругленные уголки */
-      transition: background-color 0.3s ease, transform 0.3s ease;
-    }
-
-    button.buy:disabled {
-      background-color: #ccc; /* Серый цвет фона кнопки покупки, если она недоступна */
-      cursor: not-allowed; /* Курсор в виде запрещающего знака */
-    }
-
-    button.buy:hover {
-      transform: scale(1.05); /* Увеличение размера кнопки при наведении */
+    /* Стили для статистики */
+    #stats p {
+      font-size: 20px;
+      font-weight: bold;
     }
 
     /* Стили для обмена кликов на голду */
@@ -154,24 +123,14 @@
   <div class="tab" data-tab="stats">Статистика</div>
 
   <div id="upgrades" class="tab-content active">
-    <div class="upgrade" id="upgrade1">
-      <p>Улучшение 1</p>
-      <p>Стоимость: <span id="upgrade1Cost">5</span></p>
-      <button class="buy" id="buyUpgrade1">Купить</button>
-    </div>
-    <div class="upgrade" id="upgrade2">
-      <p>Улучшение 2</p>
-      <p>Стоимость: <span id="upgrade2Cost">50</span></p>
-      <button class="buy" id="buyUpgrade2">Купить</button>
-    </div>
-    <!-- Добавьте остальные улучшения -->
+    <p>Улучшения (обновления не требуется в данной версии)</p>
   </div>
 
   <div id="stats" class="tab-content">
     <p>Всего кликов: <span id="totalClicks">0</span></p>
     <p>Голда: <span id="gold">0</span></p> <!-- Золотой цвет для отображения голды -->
-    <p>Кликов в секунду: <span id="clicksPerSecond">0</span></p>
     <p>Кликов за клик: <span id="clicksPerClickDisplay">1</span></p>
+    <p>Кликов в секунду: <span id="clicksPerSecond">0</span></p>
   </div>
 
   <div id="exchangeSection">
@@ -211,7 +170,7 @@
       updateDisplay();
     });
 
-    // Обработчик для покупки улучшений
+    // Обработчик для покупки улучшений (не используется в этой версии)
     upgrades.forEach((upgrade) => {
       const button = document.getElementById(`buyUpgrade${upgrade.id}`);
       button.addEventListener("click", () => {
@@ -248,4 +207,5 @@
   </script>
 </body>
 </html>
+
 
