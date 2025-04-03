@@ -1,27 +1,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Кликер</title>
-    <style>
-        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; }
-        button { padding: 15px 30px; font-size: 20px; cursor: pointer; }
-        #counter { margin-top: 20px; font-size: 24px; }
-    </style>
+  <title>PolywarClicker</title>
+  <style>
+    /* Стили для элементов на странице */
+    body {
+      background: linear-gradient(to bottom, white, lightgray); /* Градиентный фон */
+      color: black; /* Основной цвет текста черный */
+      font-family: sans-serif; /* Шрифт текста */
+      text-align: center; /* Выравнивание текста по центру */
+    }
+
+    button#clickButton {
+      color: black; /* Цвет текста кнопки черный */
+    }
+
+    button#clickButton2 {
+      color: black; /* Цвет текста второй кнопки черный */
+    }
+
+    span#counter {
+      color: black; /* Цвет текста счетчика черный */
+    }
+  </style>
 </head>
 <body>
-    <h1>Нажми на кнопку!</h1>
-    <button id="clickButton">Кликни меня</button>
-    <div id="counter">Счетчик: 0</div>
+  <h1>Нажми на кнопку!</h1>
+  <button id="clickButton">Кликни меня (+1)</button>
+  <button id="clickButton2">Кликни меня (+2)</button>
+  <p>Счетчик: <span id="counter">0</span></p>
 
-    <script>
-        let count = 0;
-        const button = document.getElementById('clickButton');
-        const counterDisplay = document.getElementById('counter');
+  <script>
+    // JavaScript код для работы кликера
+    const clickButton = document.getElementById('clickButton');
+    const clickButton2 = document.getElementById('clickButton2');
+    const counterDisplay = document.getElementById('counter');
+    let counterValue = 0;
 
-        button.addEventListener('click', () => {
-            count++;
-            counterDisplay.textContent = `Счетчик: ${count}`;
-        });
-    </script>
+    clickButton.addEventListener('click', function() {
+      counterValue++;
+      counterDisplay.textContent = counterValue;
+    });
+
+    clickButton2.addEventListener('click', function() {
+      counterValue += 2;
+      counterDisplay.textContent = counterValue;
+    });
+  </script>
 </body>
 </html>
