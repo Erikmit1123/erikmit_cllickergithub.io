@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Кликер</title>
+    <style>
+        body { font-family: sans-serif; display: flex; flex-direction: column; align-items: center; }
+        button { padding: 15px 30px; font-size: 20px; cursor: pointer; }
+        #counter { margin-top: 20px; font-size: 24px; }
+    </style>
+</head>
+<body>
+    <h1>Нажми на кнопку!</h1>
+    <button id="clickButton">Кликни меня</button>
+    <div id="counter">Счетчик: 0</div>
+
+    <script>
+        let count = 0;
+        const button = document.getElementById('clickButton');
+        const counterDisplay = document.getElementById('counter');
+
+        button.addEventListener('click', () => {
+            count++;
+            counterDisplay.textContent = `Счетчик: ${count}`;
+        });
+    </script>
+</body>
+</html>
