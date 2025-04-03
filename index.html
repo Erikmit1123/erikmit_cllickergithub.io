@@ -123,7 +123,56 @@
   <div class="tab" data-tab="stats">Статистика</div>
 
   <div id="upgrades" class="tab-content active">
-    <p>Улучшения (обновления не требуется в данной версии)</p>
+    <div class="upgrade" id="upgrade1">
+      <p>Улучшение 1</p>
+      <p>Стоимость: <span id="upgrade1Cost">5</span></p>
+      <button class="buy" id="buyUpgrade1">Купить</button>
+    </div>
+    <div class="upgrade" id="upgrade2">
+      <p>Улучшение 2</p>
+      <p>Стоимость: <span id="upgrade2Cost">50</span></p>
+      <button class="buy" id="buyUpgrade2">Купить</button>
+    </div>
+    <div class="upgrade" id="upgrade3">
+      <p>Улучшение 3</p>
+      <p>Стоимость: <span id="upgrade3Cost">250</span></p>
+      <button class="buy" id="buyUpgrade3">Купить</button>
+    </div>
+    <div class="upgrade" id="upgrade4">
+      <p>Улучшение 4</p>
+      <p>Стоимость: <span id="upgrade4Cost">1250</span></p>
+      <button class="buy" id="buyUpgrade4">Купить</button>
+    </div>
+    <div class="upgrade" id="upgrade5">
+      <p>Улучшение 5</p>
+      <p>Стоимость: <span id="upgrade5Cost">5000</span></p>
+      <button class="buy" id="buyUpgrade5">Купить</button>
+    </div>
+    <div class="upgrade" id="upgrade6">
+      <p>Улучшение 6</p>
+      <p>Стоимость: <span id="upgrade6Cost">25000</span></p>
+      <button class="buy" id="buyUpgrade6">Купить</button>
+    </div>
+    <div class="upgrade" id="upgrade7">
+      <p>Улучшение 7</p>
+      <p>Стоимость: <span id="upgrade7Cost">125000</span></p>
+      <button class="buy" id="buyUpgrade7">Купить</button>
+    </div>
+    <div class="upgrade" id="upgrade8">
+      <p>Улучшение 8</p>
+      <p>Стоимость: <span id="upgrade8Cost">500000</span></p>
+      <button class="buy" id="buyUpgrade8">Купить</button>
+    </div>
+    <div class="upgrade" id="upgrade9">
+      <p>Улучшение 9</p>
+      <p>Стоимость: <span id="upgrade9Cost">2500000</span></p>
+      <button class="buy" id="buyUpgrade9">Купить</button>
+    </div>
+    <div class="upgrade" id="upgrade10">
+      <p>Улучшение 10</p>
+      <p>Стоимость: <span id="upgrade10Cost">12500000</span></p>
+      <button class="buy" id="buyUpgrade10">Купить</button>
+    </div>
   </div>
 
   <div id="stats" class="tab-content">
@@ -170,7 +219,7 @@
       updateDisplay();
     });
 
-    // Обработчик для покупки улучшений (не используется в этой версии)
+    // Обработчик для покупки улучшений
     upgrades.forEach((upgrade) => {
       const button = document.getElementById(`buyUpgrade${upgrade.id}`);
       button.addEventListener("click", () => {
@@ -206,6 +255,8 @@
     });
   </script>
 </body>
+</html>
+
 </html>
 
 
