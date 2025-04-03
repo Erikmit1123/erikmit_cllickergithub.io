@@ -108,9 +108,54 @@
 
   <div id="upgrades" class="tab-content active">
     <div class="upgrade">
-      <p>Улучшение клика (+0.5 за уровень)</p>
+      <p>Улучшение клика (+1.5 за уровень)</p>
       <p>Стоимость: <span id="upgradeClickValueCost">10</span> кликов</p>
       <button id="buyUpgradeClickValue" class="buy">Купить</button>
+    </div>
+    <div class="upgrade">
+      <p>Улучшение клика (+1.5 за уровень)</p>
+      <p>Стоимость: <span id="upgradeClickValueCost2">25</span> кликов</p>
+      <button id="buyUpgradeClickValue2" class="buy">Купить</button>
+    </div>
+    <div class="upgrade">
+      <p>Улучшение клика (+1.5 за уровень)</p>
+      <p>Стоимость: <span id="upgradeClickValueCost3">50</span> кликов</p>
+      <button id="buyUpgradeClickValue3" class="buy">Купить</button>
+    </div>
+    <div class="upgrade">
+      <p>Улучшение клика (+1.5 за уровень)</p>
+      <p>Стоимость: <span id="upgradeClickValueCost4">125</span> кликов</p>
+      <button id="buyUpgradeClickValue4" class="buy">Купить</button>
+    </div>
+    <div class="upgrade">
+      <p>Улучшение клика (+1.5 за уровень)</p>
+      <p>Стоимость: <span id="upgradeClickValueCost5">250</span> кликов</p>
+      <button id="buyUpgradeClickValue5" class="buy">Купить</button>
+    </div>
+    <div class="upgrade">
+      <p>Улучшение клика (+1.5 за уровень)</p>
+      <p>Стоимость: <span id="upgradeClickValueCost6">625</span> кликов</p>
+      <button id="buyUpgradeClickValue6" class="buy">Купить</button>
+    </div>
+    <div class="upgrade">
+      <p>Улучшение клика (+1.5 за уровень)</p>
+      <p>Стоимость: <span id="upgradeClickValueCost7">1250</span> кликов</p>
+      <button id="buyUpgradeClickValue7" class="buy">Купить</button>
+    </div>
+    <div class="upgrade">
+      <p>Улучшение клика (+1.5 за уровень)</p>
+      <p>Стоимость: <span id="upgradeClickValueCost8">3125</span> кликов</p>
+      <button id="buyUpgradeClickValue8" class="buy">Купить</button>
+    </div>
+    <div class="upgrade">
+      <p>Улучшение клика (+1.5 за уровень)</p>
+      <p>Стоимость: <span id="upgradeClickValueCost9">6250</span> кликов</p>
+      <button id="buyUpgradeClickValue9" class="buy">Купить</button>
+    </div>
+    <div class="upgrade">
+      <p>Улучшение клика (+1.5 за уровень)</p>
+      <p>Стоимость: <span id="upgradeClickValueCost10">15625</span> кликов</p>
+      <button id="buyUpgradeClickValue10" class="buy">Купить</button>
     </div>
   </div>
 
@@ -147,16 +192,125 @@
 
     // Улучшения
     const buyUpgradeClickValueButton = document.getElementById('buyUpgradeClickValue');
+    const buyUpgradeClickValueButton2 = document.getElementById('buyUpgradeClickValue2');
+    const buyUpgradeClickValueButton3 = document.getElementById('buyUpgradeClickValue3');
+    const buyUpgradeClickValueButton4 = document.getElementById('buyUpgradeClickValue4');
+    const buyUpgradeClickValueButton5 = document.getElementById('buyUpgradeClickValue5');
+    const buyUpgradeClickValueButton6 = document.getElementById('buyUpgradeClickValue6');
+    const buyUpgradeClickValueButton7 = document.getElementById('buyUpgradeClickValue7');
+    const buyUpgradeClickValueButton8 = document.getElementById('buyUpgradeClickValue8');
+    const buyUpgradeClickValueButton9 = document.getElementById('buyUpgradeClickValue9');
+    const buyUpgradeClickValueButton10 = document.getElementById('buyUpgradeClickValue10');
 
     buyUpgradeClickValueButton.addEventListener('click', function() {
       if (counterValue >= clickValueUpgradeCost) {
         counterValue -= clickValueUpgradeCost;
         counterDisplay.textContent = counterValue;
-        clicksPerClick += 0.5;
+        clicksPerClick += 1.5;
         clicksPerClickDisplay.textContent = clicksPerClick;
         clickValueUpgradeLevel++;
         clickValueUpgradeCost = Math.floor(clickValueUpgradeCost * 2.5);
         document.getElementById('upgradeClickValueCost').textContent = clickValueUpgradeCost;
+      } else {
+        alert('Недостаточно кликов для покупки улучшения!');
+      }
+    });
+
+    // Добавляем обработчики для остальных улучшений
+    buyUpgradeClickValueButton2.addEventListener('click', function() {
+      if (counterValue >= 25) {
+        counterValue -= 25;
+        counterDisplay.textContent = counterValue;
+        clicksPerClick += 1.5;
+        clicksPerClickDisplay.textContent = clicksPerClick;
+      } else {
+        alert('Недостаточно кликов для покупки улучшения!');
+      }
+    });
+
+    buyUpgradeClickValueButton3.addEventListener('click', function() {
+      if (counterValue >= 50) {
+        counterValue -= 50;
+        counterDisplay.textContent = counterValue;
+        clicksPerClick += 1.5;
+        clicksPerClickDisplay.textContent = clicksPerClick;
+      } else {
+        alert('Недостаточно кликов для покупки улучшения!');
+      }
+    });
+
+    buyUpgradeClickValueButton4.addEventListener('click', function() {
+      if (counterValue >= 125) {
+        counterValue -= 125;
+        counterDisplay.textContent = counterValue;
+        clicksPerClick += 1.5;
+        clicksPerClickDisplay.textContent = clicksPerClick;
+      } else {
+        alert('Недостаточно кликов для покупки улучшения!');
+      }
+    });
+
+    buyUpgradeClickValueButton5.addEventListener('click', function() {
+      if (counterValue >= 250) {
+        counterValue -= 250;
+        counterDisplay.textContent = counterValue;
+        clicksPerClick += 1.5;
+        clicksPerClickDisplay.textContent = clicksPerClick;
+      } else {
+        alert('Недостаточно кликов для покупки улучшения!');
+      }
+    });
+
+    buyUpgradeClickValueButton6.addEventListener('click', function() {
+      if (counterValue >= 625) {
+        counterValue -= 625;
+        counterDisplay.textContent = counterValue;
+        clicksPerClick += 1.5;
+        clicksPerClickDisplay.textContent = clicksPerClick;
+      } else {
+        alert('Недостаточно кликов для покупки улучшения!');
+      }
+    });
+
+    buyUpgradeClickValueButton7.addEventListener('click', function() {
+      if (counterValue >= 1250) {
+        counterValue -= 1250;
+        counterDisplay.textContent = counterValue;
+        clicksPerClick += 1.5;
+        clicksPerClickDisplay.textContent = clicksPerClick;
+      } else {
+        alert('Недостаточно кликов для покупки улучшения!');
+      }
+    });
+
+    buyUpgradeClickValueButton8.addEventListener('click', function() {
+      if (counterValue >= 3125) {
+        counterValue -= 3125;
+        counterDisplay.textContent = counterValue;
+        clicksPerClick += 1.5;
+        clicksPerClickDisplay.textContent = clicksPerClick;
+      } else {
+        alert('Недостаточно кликов для покупки улучшения!');
+      }
+    });
+
+    buyUpgradeClickValueButton9.addEventListener('click', function() {
+      if (counterValue >= 6250) {
+        counterValue -= 6250;
+        counterDisplay.textContent = counterValue;
+        clicksPerClick += 1.5;
+        clicksPerClickDisplay.textContent = clicksPerClick;
+      } else {
+        alert('Недостаточно кликов для покупки улучшения!');
+      }
+    });
+
+    buyUpgradeClickValueButton10.addEventListener('click', function() {
+      if (counterValue >= 15625) {
+        counterValue -= 15625;
+        counterDisplay.textContent = counterValue;
+        clicksPerClick += 1.5;
+        clicksPerClickDisplay.textContent = clicksPerClick;
       } else {
         alert('Недостаточно кликов для покупки улучшения!');
       }
@@ -193,4 +347,3 @@
   </script>
 </body>
 </html>
-
