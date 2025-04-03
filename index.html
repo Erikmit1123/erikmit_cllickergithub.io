@@ -1,171 +1,244 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>PolywarClicker</title>
   <style>
     /* Стили для элементов на странице */
-/* Стили для элементов на странице */
-body {
-  background: linear-gradient(to bottom, #f0f0f0, #dcdcdc); /* Более светлый градиентный фон */
-  color: #333; /* Темно-серый основной цвет текста */
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Современный шрифт */
-  text-align: center; /* Выравнивание текста по центру */
-  padding-top: 20px; /* Отступ сверху */
-  transition: background-color 0.3s ease; /* Плавный переход фона */
-}
+    body {
+      background: linear-gradient(to bottom, #f0f0f0, #dcdcdc); /* Более светлый градиентный фон */
+      color: #333; /* Темно-серый основной цвет текста */
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Современный шрифт */
+      text-align: center; /* Выравнивание текста по центру */
+      padding-top: 20px; /* Отступ сверху */
+      transition: background-color 0.3s ease; /* Плавный переход фона */
+    }
 
-h1 {
-  color: #555; /* Цвет заголовка */
-  font-size: 36px;
-  margin-bottom: 20px;
-}
+    h1 {
+      color: #555; /* Цвет заголовка */
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
 
-button#clickButton {
-  background-color: #007bff; /* Синий цвет фона кнопки */
-  color: white; /* Белый цвет текста кнопки */
-  border: none; /* Убираем обводку кнопки */
-  padding: 12px 24px; /* Отступы внутри кнопки */
-  font-size: 18px; /* Размер шрифта кнопки */
-  cursor: pointer; /* Курсор в виде руки при наведении */
-  margin: 5px; /* Отступы между кнопками */
-  border-radius: 8px; /* Скругленные уголки */
-  transition: background-color 0.3s ease, transform 0.3s ease; /* Плавный переход и анимация */
-}
+    button#clickButton {
+      background-color: #007bff; /* Синий цвет фона кнопки */
+      color: white; /* Белый цвет текста кнопки */
+      border: none; /* Убираем обводку кнопки */
+      padding: 12px 24px; /* Отступы внутри кнопки */
+      font-size: 18px; /* Размер шрифта кнопки */
+      cursor: pointer; /* Курсор в виде руки при наведении */
+      margin: 5px; /* Отступы между кнопками */
+      border-radius: 8px; /* Скругленные уголки */
+      transition: background-color 0.3s ease, transform 0.3s ease; /* Плавный переход и анимация */
+    }
 
-button#clickButton:hover {
-  background-color: #0056b3; /* Более темный синий при наведении */
-  transform: scale(1.1); /* Увеличение размера при наведении */
-}
+    button#clickButton:hover {
+      background-color: #0056b3; /* Более темный синий при наведении */
+      transform: scale(1.1); /* Увеличение размера при наведении */
+    }
 
-span#counter {
-  color: #007bff; /* Синий цвет счетчика */
-  font-size: 28px; /* Увеличенный размер шрифта счетчика */
-  font-weight: bold; /* Жирный шрифт счетчика */
-  margin-top: 15px; /* Отступ сверху от кнопок */
-  display: block; /* Чтобы занимал отдельную строку */
-}
+    span#counter {
+      color: #007bff; /* Синий цвет счетчика */
+      font-size: 28px; /* Увеличенный размер шрифта счетчика */
+      font-weight: bold; /* Жирный шрифт счетчика */
+      margin-top: 15px; /* Отступ сверху от кнопок */
+      display: block; /* Чтобы занимал отдельную строку */
+    }
 
-/* Стили для вкладок */
-.tab {
-  display: inline-block; /* Вкладки в строку */
-  padding: 12px 24px; /* Отступы внутри вкладок */
-  background-color: #f0f0f0; /* Светло-серый фон вкладок */
-  border: 1px solid #ccc; /* Обводка вкладок */
-  cursor: pointer; /* Курсор в виде руки при наведении */
-  font-size: 18px;
-  border-radius: 8px;
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
+    /* Стили для вкладок */
+    .tab {
+      display: inline-block; /* Вкладки в строку */
+      padding: 12px 24px; /* Отступы внутри вкладок */
+      background-color: #f0f0f0; /* Светло-серый фон вкладок */
+      border: 1px solid #ccc; /* Обводка вкладок */
+      cursor: pointer; /* Курсор в виде руки при наведении */
+      font-size: 18px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
 
-.tab.active {
-  background-color: #007bff; /* Синий фон активной вкладки */
-  color: white; /* Белый цвет текста активной вкладки */
-}
+    .tab.active {
+      background-color: #007bff; /* Синий фон активной вкладки */
+      color: white; /* Белый цвет текста активной вкладки */
+    }
 
-.tab:hover {
-  transform: scale(1.05); /* Легкое увеличение при наведении */
-}
+    .tab:hover {
+      transform: scale(1.05); /* Легкое увеличение при наведении */
+    }
 
-.tab-content {
-  display: none; /* Скрываем контент вкладок */
-  margin-top: 20px; /* Отступ сверху от вкладок */
-  font-size: 18px;
-}
+    .tab-content {
+      display: none; /* Скрываем контент вкладок */
+      margin-top: 20px; /* Отступ сверху от вкладок */
+      font-size: 18px;
+    }
 
-.tab-content.active {
-  display: block; /* Показываем активный контент */
-}
+    .tab-content.active {
+      display: block; /* Показываем активный контент */
+    }
 
-/* Стили для улучшений */
-.upgrade {
-  background-color: #f9f9f9; /* Светлый фон улучшений */
-  border: 1px solid #ccc; /* Обводка улучшений */
-  padding: 15px; /* Отступы внутри улучшений */
-  margin: 15px 0; /* Отступы между улучшениями */
-  display: inline-block; /* Чтобы улучшения отображались в строку */
-  width: 200px; /* Ширина блока */
-  border-radius: 8px; /* Скругленные уголки */
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
-  transition: box-shadow 0.3s ease; /* Плавный переход для тени */
-}
+    /* Стили для улучшений */
+    .upgrade {
+      background-color: #f9f9f9; /* Светлый фон улучшений */
+      border: 1px solid #ccc; /* Обводка улучшений */
+      padding: 15px; /* Отступы внутри улучшений */
+      margin: 15px 0; /* Отступы между улучшениями */
+      display: inline-block; /* Чтобы улучшения отображались в строку */
+      width: 200px; /* Ширина блока */
+      border-radius: 8px; /* Скругленные уголки */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Легкая тень */
+      transition: box-shadow 0.3s ease; /* Плавный переход для тени */
+    }
 
-.upgrade:hover {
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Увеличение тени при наведении */
-}
+    .upgrade:hover {
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2); /* Увеличение тени при наведении */
+    }
 
-button.buy {
-  background-color: #28a745; /* Зеленый цвет фона кнопки покупки */
-  color: white; /* Белый цвет текста кнопки покупки */
-  border: none; /* Убираем обводку кнопки покупки */
-  padding: 8px 16px; /* Отступы внутри кнопки покупки */
-  font-size: 16px; /* Размер шрифта кнопки покупки */
-  cursor: pointer; /* Курсор в виде руки при наведении */
-  border-radius: 5px; /* Скругленные уголки */
-  transition: background-color 0.3s ease, transform 0.3s ease;
-}
+    button.buy {
+      background-color: #28a745; /* Зеленый цвет фона кнопки покупки */
+      color: white; /* Белый цвет текста кнопки покупки */
+      border: none; /* Убираем обводку кнопки покупки */
+      padding: 8px 16px; /* Отступы внутри кнопки покупки */
+      font-size: 16px; /* Размер шрифта кнопки покупки */
+      cursor: pointer; /* Курсор в виде руки при наведении */
+      border-radius: 5px; /* Скругленные уголки */
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
 
-button.buy:disabled {
-  background-color: #ccc; /* Серый цвет фона кнопки покупки, если она недоступна */
-  cursor: not-allowed; /* Курсор в виде запрещающего знака */
-}
+    button.buy:disabled {
+      background-color: #ccc; /* Серый цвет фона кнопки покупки, если она недоступна */
+      cursor: not-allowed; /* Курсор в виде запрещающего знака */
+    }
 
-button.buy:hover {
-  transform: scale(1.05); /* Увеличение размера кнопки при наведении */
-}
+    button.buy:hover {
+      transform: scale(1.05); /* Увеличение размера кнопки при наведении */
+    }
 
-let totalClicks = 0; // Общий счетчик кликов
-let clicksPerClick = 1; // Количество кликов за один клик
-let upgrades = [
-  { id: 1, cost: 5, value: 1 },
-  { id: 2, cost: 50, value: 5 },
-  { id: 3, cost: 250, value: 10 },
-  { id: 4, cost: 1250, value: 25 },
-  { id: 5, cost: 5000, value: 50 },
-  { id: 6, cost: 25000, value: 100 },
-  { id: 7, cost: 125000, value: 250 },
-  { id: 8, cost: 500000, value: 500 },
-  { id: 9, cost: 2500000, value: 1000 },
-  { id: 10, cost: 12500000, value: 2500 }
-];
+    /* Стили для обмена кликов на голду */
+    #exchangeSection {
+      margin-top: 30px;
+    }
 
-document.getElementById('clickButton').addEventListener('click', () => {
-  totalClicks += clicksPerClick;
-  document.getElementById('counter').textContent = totalClicks;
-  document.getElementById('totalClicks').textContent = totalClicks;
-  updateUpgradeButtons();
-});
+    button#exchangeClicksButton {
+      background-color: #ffc107; /* Желтый цвет фона кнопки обмена */
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
 
-function buyUpgrade(upgradeId) {
-  const upgrade = upgrades.find(u => u.id === upgradeId);
-  if (totalClicks >= upgrade.cost) {
-    totalClicks -= upgrade.cost;
-    clicksPerClick += upgrade.value;
-    upgrade.cost = Math.floor(upgrade.cost * 1.5); // Увеличиваем стоимость улучшения
+    button#exchangeClicksButton:hover {
+      background-color: #e0a800; /* Более темный желтый при наведении */
+      transform: scale(1.05); /* Увеличение размера при наведении */
+    }
 
-    document.getElementById('counter').textContent = totalClicks;
-    document.getElementById('totalClicks').textContent = totalClicks;
+    /* Стили для отображения голды золотым цветом */
+    span#gold {
+      color: gold; /* Золотой цвет для отображения голды */
+      font-size: 28px;
+      font-weight: bold;
+      margin-top: 15px;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+  <h1>PolywarClicker</h1>
+  <button id="clickButton">Кликни меня!</button>
+  <p>Счетчик кликов: <span id="counter">0</span></p>
+
+  <div class="tab active" data-tab="upgrades">Улучшения</div>
+  <div class="tab" data-tab="stats">Статистика</div>
+
+  <div id="upgrades" class="tab-content active">
+    <!-- Ваши улучшения -->
+  </div>
+
+  <div id="stats" class="tab-content">
+    <p>Всего кликов: <span id="totalClicks">0</span></p>
+    <p>Голда: <span id="gold">0</span></p> <!-- Золотой цвет для отображения голды -->
+    <p>Кликов в секунду: <span id="clicksPerSecond">0</span></p>
+    <p>Кликов за клик: <span id="clicksPerClickDisplay">1</span></p>
+  </div>
+
+  <div id="exchangeSection">
+    <p>Обмен кликов на голду: 10,000 кликов = 1 голда</p>
+    <button id="exchangeClicksButton">Обменять клики на голду</button>
+  </div>
+
+  <script>
+    let totalClicks = 0; // Общий счетчик кликов
+    let clicksPerClick = 1; // Количество кликов за один клик
+    let gold = 0; // Количество золота
+    let upgrades = [
+      { id: 1, cost: 5, value: 1 },
+      { id: 2, cost: 50, value: 5 },
+      { id: 3, cost: 250, value: 10 },
+      { id: 4, cost: 1250, value: 25 },
+      { id: 5, cost: 5000, value: 50 },
+      { id: 6, cost: 25000, value: 100 },
+      { id: 7, cost: 125000, value: 250 },
+      { id: 8, cost: 500000, value: 500 },
+      { id: 9, cost: 2500000, value: 1000 },
+      { id: 10, cost: 12500000, value: 2500 }
+    ];
+
+    document.getElementById('clickButton').addEventListener('click', () => {
+      totalClicks += clicksPerClick;
+      document.getElementById('counter').textContent = totalClicks;
+      document.getElementById('totalClicks').textContent = totalClicks;
+      updateUpgradeButtons();
+    });
+
+    function buyUpgrade(upgradeId) {
+      const upgrade = upgrades.find(u => u.id === upgradeId);
+      if (totalClicks >= upgrade.cost) {
+        totalClicks -= upgrade.cost;
+        clicksPerClick += upgrade.value;
+        upgrade.cost = Math.floor(upgrade.cost * 1.5); // Увеличиваем стоимость улучшения
+
+        document.getElementById('counter').textContent = totalClicks;
+        document.getElementById('totalClicks').textContent = totalClicks;
+        updateUpgradeButtons();
+      }
+    }
+
+    function updateUpgradeButtons() {
+      upgrades.forEach(upgrade => {
+        const button = document.getElementById(`buyUpgrade${upgrade.id}`);
+        button.disabled = totalClicks < upgrade.cost;
+        document.getElementById(`upgrade${upgrade.id}Cost`).textContent = upgrade.cost;
+      });
+    }
+
+    document.querySelectorAll('.buy').forEach(button => {
+      button.addEventListener('click', (e) => {
+        const upgradeId = parseInt(e.target.id.replace('buyUpgrade', ''));
+        buyUpgrade(upgradeId);
+      });
+    });
+
+    // Функция обмена кликов на голду
+    document.getElementById('exchangeClicksButton').addEventListener('click', () => {
+      if (totalClicks >= 10000) {
+        const exchangedGold = Math.floor(totalClicks / 10000);
+        gold += exchangedGold;
+        totalClicks -= exchangedGold * 10000;
+
+        // Обновление информации о кликах и голде
+        document.getElementById('totalClicks').textContent = totalClicks;
+        document.getElementById('gold').textContent = gold;
+        document.getElementById('counter').textContent = totalClicks;
+      } else {
+        alert('Недостаточно кликов для обмена на голду!');
+      }
+    });
+
+    // Инициализация кнопок с их состоянием
     updateUpgradeButtons();
-  }
-}
-
-function updateUpgradeButtons() {
-  upgrades.forEach(upgrade => {
-    const button = document.getElementById(`buyUpgrade${upgrade.id}`);
-    button.disabled = totalClicks < upgrade.cost;
-    document.getElementById(`upgrade${upgrade.id}Cost`).textContent = upgrade.cost;
-  });
-}
-
-document.querySelectorAll('.buy').forEach(button => {
-  button.addEventListener('click', (e) => {
-    const upgradeId = parseInt(e.target.id.replace('buyUpgrade', ''));
-    buyUpgrade(upgradeId);
-  });
-});
-
-// Инициализация кнопок с их состоянием
-updateUpgradeButtons();
-
   </script>
 </body>
 </html>
