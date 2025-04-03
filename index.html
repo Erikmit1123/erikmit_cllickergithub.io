@@ -154,7 +154,18 @@
   <div class="tab" data-tab="stats">Статистика</div>
 
   <div id="upgrades" class="tab-content active">
-    <!-- Ваши улучшения -->
+    <!-- Улучшения -->
+    <div class="upgrade" id="upgrade1">
+      <p>Улучшение 1</p>
+      <p>Стоимость: <span id="upgrade1Cost">5</span></p>
+      <button class="buy" id="buyUpgrade1">Купить</button>
+    </div>
+    <div class="upgrade" id="upgrade2">
+      <p>Улучшение 2</p>
+      <p>Стоимость: <span id="upgrade2Cost">50</span></p>
+      <button class="buy" id="buyUpgrade2">Купить</button>
+    </div>
+    <!-- Добавьте остальные улучшения -->
   </div>
 
   <div id="stats" class="tab-content">
@@ -186,6 +197,7 @@
       { id: 10, cost: 12500000, value: 2500 }
     ];
 
+    // Обработчик клика по кнопке
     document.getElementById('clickButton').addEventListener('click', () => {
       totalClicks += clicksPerClick;
       document.getElementById('counter').textContent = totalClicks;
@@ -193,6 +205,7 @@
       updateUpgradeButtons();
     });
 
+    // Функция покупки улучшений
     function buyUpgrade(upgradeId) {
       const upgrade = upgrades.find(u => u.id === upgradeId);
       if (totalClicks >= upgrade.cost) {
@@ -206,6 +219,7 @@
       }
     }
 
+    // Обновление кнопок улучшений
     function updateUpgradeButtons() {
       upgrades.forEach(upgrade => {
         const button = document.getElementById(`buyUpgrade${upgrade.id}`);
@@ -221,14 +235,13 @@
       });
     });
 
-    // Функция обмена кликов на голду
+    // Обработчик обмена кликов на голду
     document.getElementById('exchangeClicksButton').addEventListener('click', () => {
       if (totalClicks >= 10000) {
         const exchangedGold = Math.floor(totalClicks / 10000);
         gold += exchangedGold;
         totalClicks -= exchangedGold * 10000;
 
-        // Обновление информации о кликах и голде
         document.getElementById('totalClicks').textContent = totalClicks;
         document.getElementById('gold').textContent = gold;
         document.getElementById('counter').textContent = totalClicks;
